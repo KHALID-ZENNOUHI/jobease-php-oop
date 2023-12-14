@@ -1,3 +1,12 @@
+<?php /*require '../conn.php';
+session_destroy();
+if (!isset($_SESSION['id'])) {
+    header('location:../login.php');
+}else{
+    if($_SESSION['role'] == 'admin') header('location: dashboard.php');
+    if($_SESSION['role'] == 'candidat') header('location: ../index.php');
+}*/
+?>
 <!DOCTYPE html>
 <html lang="en">
 

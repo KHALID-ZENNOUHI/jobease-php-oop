@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +56,23 @@
 							<a class="nav-link" href="#">EN</a>
 						</span>
 						<li class="nav-item">
-							<a class="nav-link" href="login.php">Login</a>
+							<?php if (isset($_SESSION['username'])) {?>
+								 <p class="nav-link"><?= $_SESSION['username']?></p>
+								 <ul class="navbar-nav">
+                        			<li class="nav-item dropdown">
+                        			    <a href="#" class="nav-icon pe-md-0 position-relative" data-bs-toggle="dropdown" aria-expanded="false">
+                        			        <img src="dashboard/img/photo_admin.svg" alt="icon" >
+                        			    </a>
+                        			    <div class="dropdown-menu dropdown-menu-end position-absolute" id = "f">
+                        			        <a class="dropdown-item" href="#">Profile</a>
+                        			        <a class="dropdown-item" href="#">Account Setting</a>
+                        			        <a class="dropdown-item" href="index.php?logout">Log out</a>
+                        			    </div>
+                        			</li>
+                    			</ul>
+							<?php }else{?>
+							<a class="nav-link" href="index.php">Login</a>';
+							<?php }?>
 						</li>
 					</ul>
 				</div>

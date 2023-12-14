@@ -1,6 +1,7 @@
-<?php
-include 'controler/controler.php';
+<?php 
+require 'controler.php';
 ?>
+
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
@@ -16,12 +17,12 @@ include 'controler/controler.php';
 <body>
   <div class="container">
     <div class="wrapper">
-      <div class="title">~
+      <div class="title">
         <span>Login Form</span>
-        <span><?php echo $error; ?></span>
+        <span><?php if(!empty($_SESSION['error'])) echo $_SESSION['error']; ?></span>
       </div>
       <h1></h1>
-      <form action="/jobease-php-oop/controler/controler.php" method="POST">
+      <form action="controler.php" method="POST">
         <div class="row">
           <i class="fas fa-user"></i>
           <input type="text" name="email" placeholder="Email or Phone" required>
@@ -35,7 +36,7 @@ include 'controler/controler.php';
           <input type="submit" name = "login" value="Login">
         </div>
         <span style="color:red;"></span>
-        <div class="signup-link">Not a member? <a href="jobease-php-oop/register.php">Signup now</a></div>
+        <div class="signup-link">Not a member? <a href="register.php">Signup now</a></div>
       </form>
     </div>
   </div>
