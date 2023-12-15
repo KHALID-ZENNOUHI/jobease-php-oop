@@ -9,10 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['register'])) {
 
     if ($password == $cpassword) {
         if ($register->login($email, $password)) {
-            $_SESSION['error'] = "Try entering another email.";
+            
+            $_SESSION['error'] = "Email already exists.";
+            header('Location: register.php');
         } else {
             $register->register($username, $email, $password);
-            header('Location: register.php');
+            header('Location: login.php');
         }
     } else {
         $_SESSION['error'] = "The passwords you entered don't match.";
@@ -23,8 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['register'])) {
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['login'])) {
     extract($_POST);
     $login = new Authentification($conn);
-
-    if ($login->login($email, $password) && password_verify($password, $login->row['password'])) {
+    $signIn = $login->login($email, $password);
+    // print_r($login->row['password']);
+    // die();
+    if ($signIn && password_verify($password, $login->row['password'])) {
+        
         $_SESSION['username'] = $login->row['username'];
         $_SESSION['id'] = $login->row['id'];
         $_SESSION['role'] = $login->row['role_name'];
@@ -40,9 +45,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['login'])) {
     }
 }
 
-if (isset($_SESSION['error'])) {
-    // Redirect to the appropriate page based on the error
-    header('Location: login.php');
+if(isset($_GET['keywords'])){
+    header('Content-Type: application/json');
+    $job = new Search_job($conn);
+    $name = $_GET['keywords'];
+    $location = $_GET['location'];
+    $company = $_GET['company'];
+    $jobs = $job->search_job($name , $location , $company);
+    if($jobs){
+        echo json_encode($jobs);
+        
+    }
 }
-
 ?>
