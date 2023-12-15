@@ -169,7 +169,7 @@ require 'controler.php';
     let location = inputs[1].value;
     let company = inputs[2].value;
     const request = new XMLHttpRequest();
-    request.open('GET', `controller/search_job.php?keywords=${keyword}&location=${location}&company=${company}`);
+    request.open('GET', `controler.php?name=${keyword}&location=${location}&company=${company}`);
     request.send();
     request.onreadystatechange = function() {
         if (request.readyState === 4 && request.status === 200) {

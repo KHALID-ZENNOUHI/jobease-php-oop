@@ -1,3 +1,6 @@
+<?php 
+// require 'controler.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -286,38 +289,41 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form method  = "POST" enctype = "multipart/form-data" action = "../controler.php" autocomplet = "off">
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Job Title:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" name = "title" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Job Description:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <textarea class="form-control" name = "description" id="message-text"></textarea>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Company:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" name = "company" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Job location:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" name = "location" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Job status:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <select name = "status" id="" class="form-control">
+                <option value="open">open</option>
+                <option value="closed">closed</option>
+            </select>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Creation Date</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="date" name = "creation_date" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Image Path:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">Upload Image:</label>
+            <input type="file" name = "file" accept = ".jpg, .png, jpeg, .gif" class="form-control" id="recipient-name">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="Submit" class="btn btn-primary">Add Job</button>
+            <button type="Submit" name = "add_job" class="btn btn-primary">Add Job</button>
           </div>
         </form>
       </div>

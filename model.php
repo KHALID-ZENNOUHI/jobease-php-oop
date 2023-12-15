@@ -45,3 +45,24 @@ class Search_job{
         return $job;
     }   
  }
+
+ class Job_crud{
+    private $connection;
+    public function __construct($conn){
+        $this->connection = $conn;
+    }
+    // public function create($title, $description, $company, $location, $status, $date_created, $image_path, $user_id){
+    //     $query = "INSERT INTO `jobs`(`title`, `description`, `company`, `location`, `status`, `date_created`, `image_path`, `user_id`) VALUES ('$title','$description','$company','$location','status','$date_created','$image_path','$user_id')";
+    //     $addjob = $this->connection->query($query);
+    //     return $addjob;
+    // }
+    public function create($title, $description, $company, $location, $status, $date_created, $image_path, $user_id) {
+        $query = "INSERT INTO `jobs`(`title`, `description`, `company`, `location`, `status`, `date_created`, `image_path`, `user_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("sssssssi", $title, $description, $company, $location, $status, $date_created, $image_path, $user_id);
+        $addjob = $stmt->execute();
+        $stmt->close();
+        return $addjob;
+    }
+    
+ }

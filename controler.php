@@ -45,16 +45,44 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['login'])) {
     }
 }
 
-if(isset($_GET['keywords'])){
+if(isset($_GET['name'])){
     header('Content-Type: application/json');
     $job = new Search_job($conn);
-    $name = $_GET['keywords'];
+    $name = $_GET['name'];
     $location = $_GET['location'];
     $company = $_GET['company'];
     $jobs = $job->search_job($name , $location , $company);
     if($jobs){
         echo json_encode($jobs);
         
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add_job'])) {
+    extract($_POST);
+    if ($_FILES["file"]["error"] === 4) {
+        echo "<script>alert('Image Does Not Exist')</script>";
+    }else{
+        $fileName = $_FILES["file"]["name"];
+        $fileSize = $_FILES["file"]["size"];
+        $tmpName = $_FILES["file"]["tmp_name"];
+        $validImageExtension = ['jpeg', 'jpg', 'png', 'gif'];
+        $imageExtension = explode('.', $fileName);
+        $imageExtension = strtolower(end($imageExtension));
+        // echo $fileSize;
+        // die();
+        if (!in_array($imageExtension, $validImageExtension)) {
+            echo "<script>alert('Invalid Image Extension')</script>";
+        }elseif ($fileSize > 100000000){
+            echo "<script>alert('Image Size Is Too Large')</script>";
+        }else{
+            $newImageName = uniqid();
+            $newImageName .= '.' . $imageExtension;
+            move_uploaded_file($tmpName, 'imageUpload/' . $newImageName);
+            $add_job = new Job_crud($conn);
+            $add_job->create($title, $description, $company, $location, $status, $creation_date, $newImageName, $_SESSION['id']);
+            echo "<script>alert('successfully added');</script>";
+        }
     }
 }
 ?>
