@@ -181,7 +181,7 @@ require 'controler.php';
             
             <article class="postcard light green">
                 <a class="postcard__img_link" href="#">
-                    <img class="postcard__img" src="https://picsum.photos/300/300" alt="Image Title" />
+                    <img class="postcard__img" src="imageUpload/${respons[i]["image_path"]}" alt="Image Title" />
                 </a>
                 <div class="postcard__text t-dark">
                     <h3 class="postcard__title green"><a href="#">${respons[i]["title"]}</a></h3>

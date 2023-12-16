@@ -1,5 +1,5 @@
 <?php 
-// require 'controler.php';
+require '../controler.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,177 +101,52 @@
                     </ul>
                 </div>
             </nav>
-            <section class="Agents px-4">
+            <section class="px-4 main">
                     <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add a new job</button>
+                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add a new job</button>
                 <table class="agent table align-middle bg-white" style="min-width: 700px;">
                     <thead class="bg-light">
                         <tr>
                             <th>Title</th>
-                            <th>description</th>
-                            <th>tags</th>
-                            <th>status</th>
+                            <th>Description</th>
+                            <th>Company</th>
+                            <th>Location</th>
+                            <th>Creation Date</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        foreach ($jobs as $job) {
+                        ?>
                         <tr class="freelancer">
                             <td>
                                 <div class="d-flex align-items-center">
-                                    
                                     <div class="ms-3">
-                                        <p class="fw-bold mb-1 f_name">John Doe</p>
+                                        <p class="fw-bold mb-1 f_name"><?php echo $job['title']; ?></p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p class="fw-normal mb-1 f_title">I need someone for InDesign work on a semi-regular basis. Must be proficient in Indesign and page layout. Must be detail-oriented and highly organized. Fast turnaround times are a must and need to work during USA EST business hours.</p>
-
+                                <p class="fw-normal mb-1 f_title"><?php echo $job['description']; ?></p>
                             </td>
                             <td>
-                                <a href="#" class="f_status">Adobe InDesign Brochure Design Graphic Design PDF Photoshop</a>
+                                <a href="#" class="f_status"><?php echo $job['company']; ?></a>
                             </td>
-                            <td class="f_position">Inactif</td>
+                            <td class="f_position"><?php echo $job['location']; ?></td>
+                            <td class=""><?php echo $job['date_created']; ?></td>
+                            <td class=""><?php echo $job['status']; ?></td>
                             <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
+                                    <a href="#editjobmodal<?php echo $job['job_id']?>" data-bs-toggle="modal"><img class="accept_task w-50" src="img/journal-check.svg" alt="icon"></a>
+                                    <a href="../controler.php?jobid=<?= $job['job_id']?>"><img class="delet_user w-50" src="img/journal-x.svg" alt="icon"></a>
                             </td>
                         </tr>
-                        <tr class="freelancer">
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1 f_name">John Doe</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1 f_title">I need someone for InDesign work on a semi-regular basis. Must be proficient in Indesign and page layout. Must be detail-oriented and highly organized. Fast turnaround times are a must and need to work during USA EST business hours.                                </p>
-
-                            </td>
-                            <td>
-                                <a href="#" class="f_status">Adobe InDesign Graphic Design Brochure Design Photoshop PDF</a>
-                            </td>
-                            <td class="f_position">Actif</td>
-                            <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
-                            </td>
-                        </tr>
-                        <tr class="freelancer">
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1 f_name">John Doe</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1 f_title">I am looking for a metadata expert who can optimize the metadata for my project.</p>
-
-                            </td>
-                            <td>
-                                <a href="#" class="f_status">Ghostwriting Reviews Search Engine Marketing</a>
-                            </td>
-                            <td class="f_position">Inactif</td>
-                            <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
-                            </td>
-                        </tr>
-                        <tr class="freelancer">
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1 f_name">John Doe</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1 f_title">I am looking for a freelancer to help me with an AI project it’s very small and I need it in 5 hours.                                </p>
-
-                            </td>
-                            <td>
-                                <a href="#" class="f_status">Python Mathematics</a>
-                            </td>
-                            <td class="f_position">Actif</td>
-                            <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
-                            </td>
-                        </tr>
-                        <tr class="freelancer">
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1 f_name">John Doe</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1 f_title">I am looking for a photo editor who can assist me with my project. The specific edits that I require for my photos are color correction. I have more than 20 photos that need editing, and I am looking for a quick turnaround time of within 24 hours.</p>
-
-                            </td>
-                            <td>
-                                <a href="#" class="f_status">Photoshop Photo Editing Photoshop Design Photography Graphic Design </a>
-                            </td>
-                            <td class="f_position">Inactif</td>
-                            <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
-                            </td>
-                        </tr>
-                        <tr class="freelancer">
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1 f_name">John Doe</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1 f_title">I need someone for InDesign work on a semi-regular basis. Must be proficient in Indesign and page layout. Must be detail-oriented and highly organized. Fast turnaround times are a must and need to work during USA EST business hours.</p>
-
-                            </td>
-                            <td>
-                                <a href="#" class="f_status">Adobe InDesign Brochure Design Graphic Design PDF Photoshop</a>
-                            </td>
-                            <td class="f_position">Actif</td>
-                            <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
-                            </td>
-                        </tr>
-                        <tr class="freelancer">
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1 f_name">John Doe</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1 f_title">I need someone for InDesign work on a semi-regular basis. Must be proficient in Indesign and page layout. Must be detail-oriented and highly organized. Fast turnaround times are a must and need to work during USA EST business hours.</p>
-
-                            </td>
-                            <td>
-                                <a href="#" class="f_status">Adobe InDesign Brochure Design Graphic Design PDF Photoshop</a>
-                            </td>
-                            <td class="f_position">Actif</td>
-                            <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
-                            </td>
-                        </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
-
 
             </section>
             
@@ -280,7 +155,7 @@
 
 
 
-<!-- Modal -->
+<!-- Modal add job -->
 <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -331,6 +206,66 @@
     </div>
   </div>
 </div>
+<!-- Modal edit job -->
+<?php
+// $jobdisplay = new Job_crud($conn);
+// $jobs = $jobdisplay->readAll();
+    foreach ($jobs as $job) {
+?>
+<div class="modal fade modal-xl" id="editjobmodal<?=$job['job_id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Job</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method  = "POST" enctype = "multipart/form-data" action = "../controler.php" autocomplet = "off">
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Job Title:</label>
+                    <input type="text" name = "title" class="form-control" id="recipient-name" value = "<?php echo $job['title']; ?>">
+                </div>
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Job Description:</label>
+                    <textarea class="form-control" name = "description" id="message-text" value = ""><?php echo $job['description']; ?></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Company:</label>
+                    <input type="text" name = "company" class="form-control" id="recipient-name" value = "<?php echo $job['company']; ?>">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Job location:</label>
+                    <input type="text" name = "location" class="form-control" id="recipient-name" value = "<?php echo $job['location']; ?>">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Job status:</label>
+                    <select name="status"id="" class="form-control">
+                        <option value="open" <?php if ($job['status'] == "open") echo "selected"; ?>>open</option>
+                        <option value="closed" <?php if ($job['status'] == "Closed") echo "selected"; ?>>closed</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Creation Date</label>
+                    <input type="date" name = "creation_date" class="form-control" id="recipient-name" value = "<?php echo $job['date_created']; ?>">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Upload Image:</label>
+                    <input type="file" name = "file" accept = ".jpg, .png, jpeg, .gif" class="form-control" id="recipient-name" value = "<?php echo $job['image_path']; ?>">
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" value = "<?php echo $job['job_id']; ?>" name = "jobid">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="Submit" name = "edit_job" class="btn btn-primary">Edit Job</button>
+                </div>
+                </form>
+            </div>
+                        
+        </div>
+    </div>
+</div>
+<?php
+    }
+?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>

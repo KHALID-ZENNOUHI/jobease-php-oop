@@ -58,7 +58,7 @@ if(isset($_GET['name'])){
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add_job'])) {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     extract($_POST);
     if ($_FILES["file"]["error"] === 4) {
         echo "<script>alert('Image Does Not Exist')</script>";
@@ -80,9 +80,35 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['add_job'])) {
             $newImageName .= '.' . $imageExtension;
             move_uploaded_file($tmpName, 'imageUpload/' . $newImageName);
             $add_job = new Job_crud($conn);
-            $add_job->create($title, $description, $company, $location, $status, $creation_date, $newImageName, $_SESSION['id']);
-            echo "<script>alert('successfully added');</script>";
+            if (isset($_POST['add_job'])) {
+                echo "<script>alert('successfully added');</script>";
+                $up = $add_job->create($title, $description, $company, $location, $status, $creation_date, $newImageName, $_SESSION['id']);
+                header('location: dashboard/offre.php');
+            }elseif(isset($_POST['edit_job'])){
+                $add_job->update($jobid, $title, $description, $company, $location, $status, $creation_date, $newImageName, $_SESSION['id']);
+                echo "<script>alert('Edit successfully');</script>";
+                header('location: dashboard/offre.php');
+            }
+            
         }
     }
 }
+
+$jobdisplay = new Job_crud($conn);
+$jobs = $jobdisplay->readAll();
+
+if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['jobid'])) {
+    $id = $_GET['jobid'];
+    $jobdelete = new Job_crud($conn);
+    $jobdelete->delete($id);
+    header('location: dashboard/offre.php');
+}
+
+// if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['edit_job'])) {
+//     extract($_POST);
+//     $jobupdate = new Job_crud($conn);
+//     $khalid = $jobupdate->update($title, $description, $company, $location, $status, $creation_date, $newImageName, $_SESSION['id']);
+//     print_r($khalid);
+//     die();
+// }
 ?>
