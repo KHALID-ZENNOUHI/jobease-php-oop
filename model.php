@@ -69,8 +69,7 @@ class Job_crud{
         $stmt->close();
         return $jobs;
     }
-    
-    
+
     public function update($job_id, $title, $description, $company, $location, $status, $date_created, $image_path, $user_id) {
         $query = "UPDATE `jobs` SET `title`=?, `description`=?, `company`=?, `location`=?, `status`=?, `date_created`=?, `image_path`=?, `user_id`=? WHERE `job_id`=?";
         $stmt = $this->connection->prepare($query);
@@ -87,5 +86,19 @@ class Job_crud{
         $stmt->close();
     }
     
-    
+}
+
+class Job_appliers{
+    private $connection;
+    public function __construct($conn){
+        $this->connection = $conn;
+    }
+    public function create($userid, $jobid, $status) {
+        $query = "INSERT INTO `job_appliers`(`id`, `job_id`, `applier_status`) VALUES (?, ?, ?)";
+        $stmt = $this->connection->prepare($query);
+        $applier_status = "pending";
+        $stmt->bind_param("iis", $userid, $jobid, $applier_status);
+        $addjob = $stmt->execute();
+        $stmt->close();
+    }
 }

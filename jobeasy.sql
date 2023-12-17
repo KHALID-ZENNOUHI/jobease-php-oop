@@ -61,6 +61,20 @@ CREATE TABLE `users` (
   `role_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_appliers`
+--
+--
+CREATE TABLE job_appliers(
+	appliers_id int PRIMARY KEY AUTO_INCREMENT,
+    id int,
+    FOREIGN KEY (id) REFERENCES users(id),
+    job_id int,
+    FOREIGN KEY (job_id) REFERENCES jobs(job_id),
+    applier_status ENUM('approved', 'disapproved') 
+)
 --
 -- Dumping data for table `users`
 --

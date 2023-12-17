@@ -26,8 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['login'])) {
     extract($_POST);
     $login = new Authentification($conn);
     $signIn = $login->login($email, $password);
-    // print_r($login->row['password']);
-    // die();
     if ($signIn && password_verify($password, $login->row['password'])) {
         
         $_SESSION['username'] = $login->row['username'];
@@ -69,8 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $validImageExtension = ['jpeg', 'jpg', 'png', 'gif'];
         $imageExtension = explode('.', $fileName);
         $imageExtension = strtolower(end($imageExtension));
-        // echo $fileSize;
-        // die();
         if (!in_array($imageExtension, $validImageExtension)) {
             echo "<script>alert('Invalid Image Extension')</script>";
         }elseif ($fileSize > 100000000){
@@ -104,11 +100,13 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['jobid'])) {
     header('location: dashboard/offre.php');
 }
 
-// if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_GET['edit_job'])) {
-//     extract($_POST);
-//     $jobupdate = new Job_crud($conn);
-//     $khalid = $jobupdate->update($title, $description, $company, $location, $status, $creation_date, $newImageName, $_SESSION['id']);
-//     print_r($khalid);
-//     die();
-// }
+if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['idjob']) && "apply") {
+    $jobid = $_GET['idjob'];
+    $applier_status;
+    $appliers = new Job_appliers($conn);
+    $hello = $appliers->create($_SESSION['id'], $jobid, $applier_status);
+    header('location:index.php');
+}
+
+
 ?>
