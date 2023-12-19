@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['idjob']) && "apply") {
     $jobid = $_GET['idjob'];
     $applier_status;
     $appliers = new Job_appliers($conn);
-    $hello = $appliers->create($_SESSION['id'], $jobid, $applier_status);
+    $appliers->create($_SESSION['id'], $jobid, $applier_status);
     header('location:index.php');
 }
 
