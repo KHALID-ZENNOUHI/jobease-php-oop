@@ -1,8 +1,3 @@
-<?php 
-// session_start();
-require 'controler.php';
-// require 'model.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +70,7 @@ require 'controler.php';
                         			</li>
                     			</ul>
 							<?php }else{?>
-							<a class="nav-link" href="index.php">Login</a>';
+							<a class="nav-link" href="login">Login</a>';
 							<?php }?>
 						</li>
 					</ul>
@@ -149,12 +144,12 @@ require 'controler.php';
                         <li class="tag__item"><i class="fas fa-clock mr-2"></i>${respons[i]["company"]}</li>
                         <li class="tag__item play green">
 						<?php if(!isset($_SESSION['id'])){?>
-                            <a href="login.php"><i class="fas fa-play mr-2">Apply</i></a>
+                            <a href="login"><i class="fas fa-play mr-2">Apply</i></a>
 						<?php }else{
 							//  $job= new Job_appliers($conn);
 							// echo $job->read(3);
 							?>
-                            <a href="controler.php?apply&idjob=${respons[i]["job_id"]}"><i class="fas fa-play mr-2">Apply</i></a>
+                            <a href="apply?apply&idjob=${respons[i]["job_id"]}"><i class="fas fa-play mr-2">Apply</i></a>
 						<?php }?>
                         </li>
                     </ul>

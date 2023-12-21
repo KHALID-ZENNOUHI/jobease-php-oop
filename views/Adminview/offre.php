@@ -139,7 +139,7 @@ require '../controler.php';
                             <td class=""><?php echo $job['status']; ?></td>
                             <td class="">
                                     <a href="#editjobmodal<?php echo $job['job_id']?>" data-bs-toggle="modal"><img class="accept_task w-50" src="img/journal-check.svg" alt="icon"></a>
-                                    <a href="../controler.php?jobid=<?= $job['job_id']?>"><img class="delet_user w-50" src="img/journal-x.svg" alt="icon"></a>
+                                    <a href="deletejob?jobid=<?= $job['job_id']?>"><img class="delet_user w-50" src="img/journal-x.svg" alt="icon"></a>
                             </td>
                         </tr>
                         <?php
@@ -164,7 +164,7 @@ require '../controler.php';
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method  = "POST" enctype = "multipart/form-data" action = "../controler.php" autocomplet = "off">
+        <form method  = "POST" enctype = "multipart/form-data" action = "addjob" autocomplet = "off">
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Job Title:</label>
             <input type="text" name = "title" class="form-control" id="recipient-name">
@@ -220,7 +220,7 @@ require '../controler.php';
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method  = "POST" enctype = "multipart/form-data" action = "../controler.php" autocomplet = "off">
+                <form method  = "POST" enctype = "multipart/form-data" action = "editjob" autocomplet = "off">
                 <div class="mb-3">
                     <label for="recipient-name" class="col-form-label">Job Title:</label>
                     <input type="text" name = "title" class="form-control" id="recipient-name" value = "<?php echo $job['title']; ?>">

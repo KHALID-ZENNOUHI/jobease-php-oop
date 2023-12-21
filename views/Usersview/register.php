@@ -16,7 +16,7 @@ require 'controler.php';
   <div class="wrapper">
     <h2>Registration</h2>
     <h2><?php if (!empty($_SESSION['error'])) echo $_SESSION['error']; ?></h2>
-    <form method = "POST" action="controler.php">
+    <form method = "POST" action="register">
       <div class="input-box">
         <input type="text" name = "username" placeholder="Enter your name" required>
       </div>
@@ -37,7 +37,7 @@ require 'controler.php';
         <input type="Submit" name = "register" value="Register Now">
       </div>
       <div class="text">
-        <h3>Already have an account? <a href="/jobease-php-oop/login.php">Login now</a></h3>
+        <h3>Already have an account? <a href="login">Login now</a></h3>
       </div>
     </form>
   </div>
