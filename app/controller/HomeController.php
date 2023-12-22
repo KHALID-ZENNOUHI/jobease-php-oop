@@ -1,20 +1,14 @@
 <?php
-namespace App\controller;
-use App\Model\Conn;
+namespace App\Controller;
+
 class HomeController {
 
-    private $connection;
-
-    public function __construct($conn) {
-        $this->connection = $conn;
-    }
-
     public function displayDashboard() {
-        require '../../views/Adminview/dashboard.php';
+        require __DIR__ .'../../views/Adminview/dashboard.php';
     }
 
     public function displayUserHome() {
-        require '../../views/Usersview/home.php';
+        require __DIR__ .'../../../views/Usersview/home.php';
     }
 
     public function showHomePage() {
@@ -24,10 +18,6 @@ class HomeController {
             } else {
                 $this->displayUserHome();
             }
-        } else {
-            $this->displayUserHome();
-        }
+        }else $this->displayUserHome();
     }
 }
-$homeController = new HomeController($conn);
-$homeController->showHomePage();

@@ -8,7 +8,7 @@
 		JobEase
 	</title>
 
-	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="/Assets/styles/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -70,7 +70,7 @@
                         			</li>
                     			</ul>
 							<?php }else{?>
-							<a class="nav-link" href="login">Login</a>';
+							<a class="nav-link" href="login">Login</a>
 							<?php }?>
 						</li>
 					</ul>
@@ -116,7 +116,7 @@
     let location = inputs[1].value;
     let company = inputs[2].value;
     const request = new XMLHttpRequest();
-    request.open('GET', `controler.php?name=${keyword}&location=${location}&company=${company}`);
+    request.open('GET', `home?name=${keyword}&location=${location}&company=${company}`);
     request.send();
     request.onreadystatechange = function() {
         if (request.readyState === 4 && request.status === 200) {

@@ -1,18 +1,13 @@
 <?php
 namespace App\controller;
 use App\Model\Seach_job;
+
 class JobSearchController {
-
-    private $connection;
-
-    public function __construct($conn) {
-        $this->connection = $conn;
-    }
 
     public function search() {
         if(isset($_GET['name'])){
             header('Content-Type: application/json');
-            $job = new Search_job($this->conn);
+            $job = new Search_job();
             $name = $_GET['name'];
             $location = $_GET['location'];
             $company = $_GET['company'];
@@ -24,6 +19,3 @@ class JobSearchController {
     }
 }
 
-
-$jobSearchController = new JobSearchController($conn);
-$jobSearchController->search();

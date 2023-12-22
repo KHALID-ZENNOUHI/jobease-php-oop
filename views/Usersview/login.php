@@ -1,7 +1,3 @@
-<?php 
-require 'controler.php';
-?>
-
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
@@ -10,7 +6,7 @@ require 'controler.php';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Form | CodingLab</title>
-  <link rel="stylesheet" href="styles/loginstyle.css">
+  <link rel="stylesheet" href="../Assets/styles/loginstyle.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 </head>
 

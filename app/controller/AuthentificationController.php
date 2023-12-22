@@ -1,18 +1,12 @@
 <?php
 namespace App\controller;
 use App\Model\Authentification;
-class AuthenticationController {
-
-    private $connection;
-
-    public function __construct($conn) {
-        $this->connection = $conn;
-    }
+class AuthentificationController {
 
     public function handleRegistration() {
         if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['register'])) {
             extract($_POST);
-            $authentication = new Authentication($conn);
+            $authentication = new Authentication();
 
             if ($password == $cpassword) {
                 if ($authentication->login($email, $password)) {
@@ -26,13 +20,15 @@ class AuthenticationController {
                 $_SESSION['error'] = "The passwords you entered don't match.";
                 header('Location: /../../../views/Usersview/register.php');
             }
+        }elseif(isset($_GET['register'])){
+            header('Location: /../../../views/Usersview/register.php');
         }
     }
 
     public function handleLogin() {
         if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['login'])) {
             extract($_POST);
-            $authentication = new Authentication($conn);
+            $authentication = new Authentication();
             $signIn = $authentication->login($email, $password);
 
             if ($signIn && password_verify($password, $authentication->row['password'])) {
@@ -49,6 +45,8 @@ class AuthenticationController {
                 $_SESSION['error'] = "Your password is incorrect.";
                 header('Location: /../../../views/Usersview/login.php');
             }
+        }elseif(isset($_GET['login'])){
+            header('Location: /../../../views/Usersview/login.php');
         }
     }
 
@@ -60,7 +58,4 @@ class AuthenticationController {
     }
 }
 
-$authController = new AuthenticationController($conn);
-$authController->handleRegistration();
-$authController->handleLogin();
-$authController->handleLogout();
+

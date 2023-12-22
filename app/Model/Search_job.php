@@ -1,10 +1,10 @@
 <?php
 namespace App\Model;
-
+use App\Model\Conn;
 class Search_job{
     private $connection;
-    public function __construct($conn){
-        $this->connection = $conn;
+    public function __construct(){
+        $this->connection = Database::getInstance()->getConnection();
     }
     function search_job($name , $location , $company){
         $query = "SELECT * FROM jobs WHERE title LIKE '%$name%' 

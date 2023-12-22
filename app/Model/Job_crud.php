@@ -1,10 +1,10 @@
 <?php
 namespace App\Model;
-
+use App\Model\Conn;
 class Job_crud{
     private $connection;
-    public function __construct($conn){
-        $this->connection = $conn;
+    public function __construct(){
+        $this->connection = Database::getInstance()->getConnection();
     }
     
     public function create($title, $description, $company, $location, $status, $date_created, $image_path, $user_id) {

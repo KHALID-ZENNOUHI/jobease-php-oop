@@ -1,17 +1,46 @@
 <?php
-//connect with the database
-class Conn {
+namespace App\Model;
+require_once __DIR__ . '../../../config/Config.php';
 
-    const server = DB_HOST;
-    const name = DB_USERNAME;
-    const password = DB_PASSWORD;
-    const db = DB_NAME;
-    
-    public static function connection(){
-        return mysqli_connect(self::server,self::name,self::password,self::db);
+use mysqli;
+
+class Conn
+{
+    private static $instance;
+    private $mysqli;
+
+    private function __construct()
+    {
+        // Your database connection details
+        
+        $dbHost = DB_HOST;
+        $dbUser = DB_USERNAME;
+        $dbPass = DB_PASSWORD;
+        $dbName = DB_NAME;
+
+        // Create a database connection
+        $this->mysqli = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+
+        // Check connection
+        if ($this->mysqli->connect_error) {
+            die("Connection failed: " . $this->mysqli->connect_error);
+        }
+    }
+
+    public static function getInstance()
+    {
+        if (!self::$instance) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+
+    public function getConnection()
+    {
+        return $this->mysqli;
     }
 }
-$conn = Conn::connection();
 ?>
 
 

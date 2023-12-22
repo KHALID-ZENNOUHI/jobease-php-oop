@@ -3,12 +3,6 @@ namespace App\controller;
 use App\Model\Job_crud;
 class CrudJobController {
 
-    private $connection;
-
-    public function __construct($conn) {
-        $this->conn = $conn;
-    }
-
     public function handleJobForm() {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             extract($_POST);
@@ -32,7 +26,7 @@ class CrudJobController {
                     $newImageName .= '.' . $imageExtension;
                     move_uploaded_file($tmpName, 'imageUpload/' . $newImageName);
 
-                    $crudJob = new JobCrud($conn);
+                    $crudJob = new JobCrud();
 
                     if (isset($_POST['add_job'])) {
                         echo "<script>alert('Successfully added');</script>";
@@ -51,13 +45,13 @@ class CrudJobController {
     public function handleJobDeletion() {
         if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['jobid'])) {
             $id = $_GET['jobid'];
-            $crudJob = new JobCrud($this->conn);
+            $crudJob = new JobCrud();
             $crudJob->delete($id);
             header('location: dashboard/offre.php');
         }
     }
 }
 
-$crudJobController = new CrudJobController($conn);
-$crudJobController->handleJobForm();
-$crudJobController->handleJobDeletion();
+// $crudJobController = new CrudJobController($conn);
+// $crudJobController->handleJobForm();
+// $crudJobController->handleJobDeletion();

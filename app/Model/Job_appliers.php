@@ -1,10 +1,10 @@
 <?php
 namespace App\Model;
-
+use App\Model\Conn;
 class Job_appliers{
     private $connection;
-    public function __construct($conn){
-        $this->connection = $conn;
+    public function __construct(){
+        $this->connection = Database::getInstance()->getConnection();
     }
     public function create($userid, $jobid, $status) {
         $query = "INSERT INTO `job_appliers`(`id`, `job_id`, `applier_status`) VALUES (?, ?, ?)";

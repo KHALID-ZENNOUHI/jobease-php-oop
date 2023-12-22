@@ -1,6 +1,6 @@
 <?php
 namespace App\Model;
-
+use App\Model\Conn;
 class Authentification {
 
 private $username;
@@ -9,8 +9,8 @@ private $password;
 private $cpassword;
 private $connection;
 
-public function __construct($conn){
-    $this->connection = $conn;
+public function __construct(){
+    $this->connection = Database::getInstance()->getConnection();
 }
 
 public function register($username, $email, $password){
@@ -21,7 +21,6 @@ public function register($username, $email, $password){
 }
 
 public function login($email, $password){
-    // $pass = password_hash($password, PASSWORD_BCRYPT);
     $query = "SELECT * FROM `users` WHERE email = '$email'";
     $exist = $this->connection->query($query);
     $row = mysqli_fetch_array($exist);
