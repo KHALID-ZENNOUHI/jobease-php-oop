@@ -24,18 +24,17 @@ class CrudJobController {
                 } else {
                     $newImageName = uniqid();
                     $newImageName .= '.' . $imageExtension;
-                    move_uploaded_file($tmpName, 'imageUpload/' . $newImageName);
+                    move_uploaded_file($tmpName, 'Assets/imageUpload/' . $newImageName);
 
-                    $crudJob = new JobCrud();
+                    $crudJob = new Job_crud();
 
                     if (isset($_POST['add_job'])) {
                         echo "<script>alert('Successfully added');</script>";
                         $crudJob->create($title, $description, $company, $location, $status, $creation_date, $newImageName, $_SESSION['id']);
-                        header('location: dashboard/offre.php');
+                        header('location: /offre');
                     } elseif (isset($_POST['edit_job'])) {
                         $crudJob->update($jobid, $title, $description, $company, $location, $status, $creation_date, $newImageName, $_SESSION['id']);
-                        echo "<script>alert('Edit successfully');</script>";
-                        header('location: dashboard/offre.php');
+                        header('location: /offre');
                     }
                 }
             }
@@ -45,13 +44,15 @@ class CrudJobController {
     public function handleJobDeletion() {
         if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['jobid'])) {
             $id = $_GET['jobid'];
-            $crudJob = new JobCrud();
+            $crudJob = new Job_crud();
             $crudJob->delete($id);
-            header('location: dashboard/offre.php');
+            header('location: /offre');
         }
+    }
+    public function displayOffre() {
+        $readjob = new Job_crud();
+        $jobs = $readjob->readAll();
+        require __DIR__ .'../../../views/Adminview/offre.php';
     }
 }
 
-// $crudJobController = new CrudJobController($conn);
-// $crudJobController->handleJobForm();
-// $crudJobController->handleJobDeletion();

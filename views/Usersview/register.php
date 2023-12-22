@@ -1,6 +1,4 @@
-<?php 
-require 'controler.php';
-?>
+
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en" dir="ltr">
@@ -9,7 +7,7 @@ require 'controler.php';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Registration or Sign Up form in HTML CSS | CodingLab </title>
-  <link rel="stylesheet" href="styles/registerstyle.css">
+  <link rel="stylesheet" href="Assets/styles/registerstyle.css">
 </head>
 
 <body>

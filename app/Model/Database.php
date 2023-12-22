@@ -4,7 +4,7 @@ require_once __DIR__ . '../../../config/Config.php';
 
 use mysqli;
 
-class Conn
+class Database
 {
     private static $instance;
     private $mysqli;

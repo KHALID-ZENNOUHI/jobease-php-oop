@@ -1,6 +1,6 @@
 <?php
 namespace App\Model;
-use App\Model\Conn;
+use App\Model\Database;
 class Authentification {
 
 private $username;
@@ -24,7 +24,6 @@ public function login($email, $password){
     $query = "SELECT * FROM `users` WHERE email = '$email'";
     $exist = $this->connection->query($query);
     $row = mysqli_fetch_array($exist);
-    $this->row = $row;
     return $row;
 }
 }

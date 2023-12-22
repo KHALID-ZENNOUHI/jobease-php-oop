@@ -116,7 +116,7 @@
     let location = inputs[1].value;
     let company = inputs[2].value;
     const request = new XMLHttpRequest();
-    request.open('GET', `home?name=${keyword}&location=${location}&company=${company}`);
+    request.open('GET', `jobsearch?name=${keyword}&location=${location}&company=${company}`);
     request.send();
     request.onreadystatechange = function() {
         if (request.readyState === 4 && request.status === 200) {
@@ -128,7 +128,7 @@
             
             <article class="postcard light green">
                 <a class="postcard__img_link" href="#">
-                    <img class="postcard__img" src="imageUpload/${respons[i]["image_path"]}" alt="Image Title" />
+                    <img class="postcard__img" src="Assets/imageUpload/${respons[i]["image_path"]}" alt="Image Title" />
                 </a>
                 <div class="postcard__text t-dark">
                     <h3 class="postcard__title green"><a href="#">${respons[i]["title"]}</a></h3>
@@ -149,7 +149,7 @@
 							//  $job= new Job_appliers($conn);
 							// echo $job->read(3);
 							?>
-                            <a href="apply?apply&idjob=${respons[i]["job_id"]}"><i class="fas fa-play mr-2">Apply</i></a>
+                            <a href="apply?idjob=${respons[i]["job_id"]}"><i class="fas fa-play mr-2">Apply</i></a>
 						<?php }?>
                         </li>
                     </ul>

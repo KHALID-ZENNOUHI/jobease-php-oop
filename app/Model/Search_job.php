@@ -1,6 +1,6 @@
 <?php
 namespace App\Model;
-use App\Model\Conn;
+use App\Model\Database;
 class Search_job{
     private $connection;
     public function __construct(){

@@ -1,12 +1,3 @@
-<?php /*require '../conn.php';
-session_destroy();
-if (!isset($_SESSION['id'])) {
-    header('location:../login.php');
-}else{
-    if($_SESSION['role'] == 'admin') header('location: dashboard.php');
-    if($_SESSION['role'] == 'candidat') header('location: ../index.php');
-}*/
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +5,7 @@ if (!isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="Assets/styles/dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -28,30 +19,30 @@ if (!isset($_SESSION['id'])) {
             <div class="h-100">
                 <div class="sidebar_logo d-flex align-items-end">
                     
-                    <a href="dashboard.php" class="nav-link text-white-50">Dashboard</a>
-                    <img class="close align-self-start" src="img/close.svg" alt="icon">
+                    <a href="/dashboard" class="nav-link text-white-50">Dashboard</a>
+                    <img class="close align-self-start" src="Assets/img/close.svg" alt="icon">
                 </div>
 
                 <ul class="sidebar_nav">
                     <li class="sidebar_item active" style="width: 100%;">
-                        <a href="dashboard.php" class="sidebar_link"> <img src="img/1. overview.svg" alt="icon">Overview</a>
+                        <a href="/dashboard" class="sidebar_link"> <img src="Assets/img/1. overview.svg" alt="icon">Overview</a>
                     </li>
                     <li class="sidebar_item">
-                        <a href="candidat.php" class="sidebar_link"> <img src="img/agents.svg" alt="icon">Candidat</a>
+                        <a href="candidat" class="sidebar_link"> <img src="Assets/img/agents.svg" alt="icon">Candidat</a>
                     </li>
                     <li class="sidebar_item">
-                        <a href="offre.php" class="sidebar_link"> <img src="img/task.svg" alt="icon">Offre</a>
+                        <a href="/offre" class="sidebar_link"> <img src="Assets/img/task.svg" alt="icon">Offre</a>
                     </li>
                     <li class="sidebar_item">
-                        <a href="contact.php" class="sidebar_link"><img src="img/agent.svg" alt="icon">Contact</a>
+                        <a href="contact" class="sidebar_link"><img src="Assets/img/agent.svg" alt="icon">Contact</a>
                     </li>
                     <li class="sidebar_item">
-                        <a href="#" class="sidebar_link"><img src="img/articles.svg" alt="icon">Articles</a>
+                        <a href="#" class="sidebar_link"><img src="Assets/img/articles.svg" alt="icon">Articles</a>
                     </li>
 
                 </ul>
                 <div class="line"></div>
-                <a href="#" class="sidebar_link"><img src="img/settings.svg" alt="icon">Settings</a>
+                <a href="#" class="sidebar_link"><img src="Assets/img/settings.svg" alt="icon">Settings</a>
 
 
             </div>
@@ -64,16 +55,16 @@ if (!isset($_SESSION['id'])) {
                 <div class="navbar  gap-4">
                     <div class="">
                         <input type="search" class="search " placeholder="Search">
-                        <img class="search_icon" src="img/search.svg" alt="iconicon">
+                        <img class="search_icon" src="Assets/img/search.svg" alt="iconicon">
                     </div>
-                    <!-- <img src="img/search.svg" alt="icon"> -->
-                    <img class="notification" src="img/new.svg" alt="icon">
+                    <!-- <img src="Assets/img/search.svg" alt="icon"> -->
+                    <img class="notification" src="Assets/img/new.svg" alt="icon">
                     <div class="card new w-auto">
                         <div class="list-group list-group-light">
                             <div class="list-group-item px-3 d-flex justify-content-between align-items-center ">
-                                <p class="mt-auto">Notification</p><a href="#"><img src="img/settingsno.svg" alt="icon"></a>
+                                <p class="mt-auto">Notification</p><a href="#"><img src="Assets/img/settingsno.svg" alt="icon"></a>
                             </div>
-                            <div class="list-group-item px-3 d-flex"><img src="img/notif.svg" alt="iconimage">
+                            <div class="list-group-item px-3 d-flex"><img src="Assets/img/notif.svg" alt="iconimage">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text mb-3">Some quick example text to build on the card title and make up
@@ -81,7 +72,7 @@ if (!isset($_SESSION['id'])) {
                                     <small class="card-text">1  day ago</small>
                                 </div>
                             </div>
-                            <div class="list-group-item px-3 d-flex"><img src="img/notif.svg" alt="iconimage">
+                            <div class="list-group-item px-3 d-flex"><img src="Assets/img/notif.svg" alt="iconimage">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text mb-3">Some quick example text to build on the card title and make up
@@ -97,12 +88,12 @@ if (!isset($_SESSION['id'])) {
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-icon pe-md-0 position-relative" data-bs-toggle="dropdown">
-                                <img src="img/photo_admin.svg" alt="icon">
+                                <img src="Assets/img/photo_admin.svg" alt="icon">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end position-absolute">
                                 <a class="dropdown-item" href="#">Profile</a>
                                 <a class="dropdown-item" href="#">Account Setting</a>
-                                <a class="dropdown-item" href="/PeoplePerTask/project/pages/index.html">Log out</a>
+                                <a class="dropdown-item" href="/logout">Log out</a>
                             </div>
                         </li>
                     </ul>
@@ -122,7 +113,7 @@ if (!isset($_SESSION['id'])) {
                                         </div>
                                     </div>
                                     <div class="cursor">
-                                        <img src="img/project-icon-1.svg" alt="icon">
+                                        <img src="Assets/img/project-icon-1.svg" alt="icon">
                                     </div>
                                 </div>
 
@@ -141,7 +132,7 @@ if (!isset($_SESSION['id'])) {
                                         </div>
                                     </div>
                                     <div class="">
-                                        <img src="img/project-icon-2.svg" alt="icon">
+                                        <img src="Assets/img/project-icon-2.svg" alt="icon">
                                     </div>
                                 </div>
 
@@ -160,7 +151,7 @@ if (!isset($_SESSION['id'])) {
                                         </div>
                                     </div>
                                     <div class="">
-                                        <img src="img/project-icon-3.svg" alt="icon">
+                                        <img src="Assets/img/project-icon-3.svg" alt="icon">
                                     </div>
                                 </div>
 
@@ -179,7 +170,7 @@ if (!isset($_SESSION['id'])) {
                                         </div>
                                     </div>
                                     <div class="">
-                                        <img src="img/project-icon-4.svg" alt="icon">
+                                        <img src="Assets/img/project-icon-4.svg" alt="icon">
                                     </div>
                                 </div>
 
@@ -234,22 +225,22 @@ if (!isset($_SESSION['id'])) {
                             <div
                                 class="list-group-item px-3 text d-flex justify-content-between align-items-center p-4">
                                 <p>Create new offre</p>
-                                <img class="cursor " id="add_admin_task" src="img/inactive.svg" alt="icon">
+                                <img class="cursor " id="add_admin_task" src="Assets/img/inactive.svg" alt="icon">
                             </div>
                             <div
                                 class="list-group-item px-3 text d-flex justify-content-between align-items-center p-4">
                                 <p>Finish offre update</p>
-                                <img src="img/warning.svg" alt="icon">
+                                <img src="Assets/img/warning.svg" alt="icon">
                             </div>
                             <div
                                 class="list-group-item px-3 text d-flex justify-content-between align-items-center p-4">
                                 <p>Create new offre example</p>
-                                <img src="img/successnew.svg" alt="icon">
+                                <img src="Assets/img/successnew.svg" alt="icon">
                             </div>
                             <div
                                 class="list-group-item px-3 text d-flex justify-content-between align-items-center p-4">
                                 <p>Update offre report</p>
-                                <img src="img/default.svg" alt="icon">
+                                <img src="Assets/img/default.svg" alt="icon">
                             </div>
                         </div>
                     </div>
@@ -287,9 +278,9 @@ if (!isset($_SESSION['id'])) {
                 <div class="mb-4">
                     <label class="form-label">Status</label>
                         <select class="form-control" name="task status" id="status">
-                            <option value="img/default.svg">Default</option>
-                            <option value="img/successnew.svg">New</option>
-                            <option value="img/warning.svg">Urgent</option>
+                            <option value="Assets/img/default.svg">Default</option>
+                            <option value="Assets/img/successnew.svg">New</option>
+                            <option value="Assets/img/warning.svg">Urgent</option>
                         </select>
                 </div>
               
@@ -305,8 +296,8 @@ if (!isset($_SESSION['id'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <script src="dashboard.js"></script>
-    <script src="script.js"></script>
+    <script src="Assets/script/dashboard.js"></script>
+    <script src="Assets/script/script.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <?php
 namespace App\controller;
-use App\Model\Seach_job;
+use App\Model\Search_job;
 
 class JobSearchController {
 

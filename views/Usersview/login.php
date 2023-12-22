@@ -18,7 +18,7 @@
         <span><?php if(!empty($_SESSION['error'])) echo $_SESSION['error']; ?></span>
       </div>
       <h1></h1>
-      <form action="login" method="POST">
+      <form action="/login" method="POST">
         <div class="row">
           <i class="fas fa-user"></i>
           <input type="text" name="email" placeholder="Email or Phone" required>
@@ -32,7 +32,7 @@
           <input type="submit" name = "login" value="Login">
         </div>
         <span style="color:red;"></span>
-        <div class="signup-link">Not a member? <a href="register">Signup now</a></div>
+        <div class="signup-link">Not a member? <a href="/register">Signup now</a></div>
       </form>
     </div>
   </div>
