@@ -41,7 +41,10 @@
 						<li class="nav-item">
 							<a class="nav-link" href="#">Features</a>
 						</li>
-
+						<!-- Notification Icon -->
+						<a class="nav-link" href="#" data-toggle="modal" data-toggle="modal" data-target="#exampleModal">
+                    		<img class="notification" src="Assets/img/new.svg" alt="icon">
+                		</a>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								language
@@ -54,6 +57,7 @@
 						<span class="nav-item active">
 							<a class="nav-link" href="#">EN</a>
 						</span>
+						
 						<li class="nav-item">
 							<?php if (isset($_SESSION['username'])) {?>
 								 <p class="nav-link"><?= $_SESSION['username']?></p>
@@ -78,10 +82,6 @@
 			</div>
 		</nav>
 	</header>
-
-
-
-
 	<section action="#" method="get" class="search">
 		<h2>Find Your Dream Job</h2>
 		<form class="form-inline" id = "search_form" oninput = "search(event)">
@@ -104,6 +104,25 @@
 		<div class="container py-2" id = "all_jobs">
 		</div>
 	</section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ....
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 	<footer>
 		<p>© 2023 JobEase </p>
 	</footer>
@@ -166,6 +185,7 @@
 search({
     currentTarget: document.getElementById("search_form")
 });
+
 </script>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

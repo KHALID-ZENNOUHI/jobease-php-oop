@@ -1,6 +1,6 @@
 <?php
 namespace App\Model;
-use App\Model\Conn;
+use App\Model\Database;
 class Job_crud{
     private $connection;
     public function __construct(){
@@ -28,7 +28,7 @@ class Job_crud{
     public function update($job_id, $title, $description, $company, $location, $status, $date_created, $image_path, $user_id) {
         $query = "UPDATE `jobs` SET `title`=?, `description`=?, `company`=?, `location`=?, `status`=?, `date_created`=?, `image_path`=?, `user_id`=? WHERE `job_id`=?";
         $stmt = $this->connection->prepare($query);
-        $stmt->bind_param("sssssssis", $title, $description, $company, $location, $status, $date_created, $image_path, $user_id, $job_id);
+        $stmt->bind_param("sssssssii", $title, $description, $company, $location, $status, $date_created, $image_path, $user_id, $job_id);
         $updateJob = $stmt->execute();
         $stmt->close();
     }

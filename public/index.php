@@ -24,7 +24,8 @@ $route = [
     '/offre' => 'Controller/HomeController.php',
     '/dashboard' => 'Controller/HomeController.php',
     '/contact' => 'Controller/HomeController.php',
-    '/candidat' => 'Controller/HomeController.php'
+    '/candidat' => 'Controller/AppliersController.php',
+    '/updateCandidat' => 'Controller/AppliersController.php'
 ];
 if(array_key_exists($url,$route)){
     // require_once __DIR__ . '/../app/' . $route[$url];
@@ -50,8 +51,12 @@ switch ($url) {
         $controller->displaycontact();
         break;
     case '/candidat':
-        $controller = new HomeController();
-        $controller->displaycandidat();
+        $controller = new AppliersController();
+        $controller->readAplliers();
+        break;
+    case '/updateCandidat':
+        $controller = new AppliersController();
+        $controller->updateCandidat();
         break;
     case '/apply':
         $controller = new AppliersController();

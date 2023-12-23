@@ -109,30 +109,35 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        foreach ($Appliers as $Applier) {
+                        ?>
                         <tr class="freelancer">
                             <td>
                                 <div class="d-flex align-items-center">
                                     <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
                                         style="width: 45px; height: 45px" class="rounded-circle" />
                                     <div class="ms-3">
-                                        <p class="fw-bold mb-1 f_name">John Doe</p>
-                                        <p class="text-muted mb-0 f_email">john.doe@gmail.com</p>
+                                        <p class="fw-bold mb-1 f_name"><?=$Applier['username']?></p>
+                                        <p class="text-muted mb-0 f_email"><?=$Applier['email']?></p>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p class="fw-normal mb-1 f_title">Software engineer <br> IT department</p>
+                                <p class="fw-normal mb-1 f_title"><?=$Applier['title']?></p>
                                 
                             </td>
                             <td>
-                                <span class="f_status">Active</span>
+                                <span class="f_status"><?=$Applier['applier_status']?></span>
                             </td>
-                            <td class="f_position">Senior</td>
                             <td>
-                                <img class="delet_user" src="Assets/img/user-x.svg" alt="">
-                                <img class="ms-2 edit" src="Assets/img/edit.svg" alt="">
+                                <!-- <img class="delet_user" src="Assets/img/user-x.svg" alt="">
+                                <img class="ms-2 edit" src="Assets/img/edit.svg" alt=""> -->
+                                <a href="updateCandidat?id=<?=$Applier['appliers_id']?>&Approve"><button type="button" class="btn btn-primary" value = "<?=$Applier['appliers_id']?>">Approve</button></a>
+                                <a href="updateCandidat?id=<?=$Applier['appliers_id']?>&Disapprove"><button type="button" class="btn btn-danger" value = "<?=$Applier['appliers_id']?>">Disapprove</button></a>
                             </td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
 
