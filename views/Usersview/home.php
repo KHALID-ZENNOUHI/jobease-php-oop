@@ -39,12 +39,8 @@
 							<a class="nav-link" href="#">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Features</a>
+							<a class="nav-link" href="notification">Notifications</a>
 						</li>
-						<!-- Notification Icon -->
-						<a class="nav-link" href="#" data-toggle="modal" data-toggle="modal" data-target="#exampleModal">
-                    		<img class="notification" src="Assets/img/new.svg" alt="icon">
-                		</a>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								language
@@ -104,25 +100,6 @@
 		<div class="container py-2" id = "all_jobs">
 		</div>
 	</section>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ....
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 	<footer>
 		<p>© 2023 JobEase </p>
 	</footer>

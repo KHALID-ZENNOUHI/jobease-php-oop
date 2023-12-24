@@ -16,6 +16,7 @@ class HomeController {
     public function displaycandidat() {
         require __DIR__ .'../../../views/Adminview/candidat.php';
     }
+    
 
     public function showHomePage() {
         

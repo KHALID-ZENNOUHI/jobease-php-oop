@@ -19,9 +19,7 @@ class Job_appliers{
     }
 
     public function read() {
-        $id = $_SESSION["id"];
-        // $query = "SELECT * FROM `job_appliers`join jobs on job_appliers.job_id=jobs.job_id join users on job_appliers.appliers_id=users.id WHERE job_appliers.appliers_id = $id AND job_appliers.job_id = $jobid;";
-        $query = "SELECT * FROM `job_appliers` NATURAL JOIN jobs NATURAL JOIN users;";
+        $query = "SELECT * FROM `job_appliers` NATURAL JOIN jobs NATURAL JOIN users  WHERE `applier_status` IN ('pending');";
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -36,5 +34,16 @@ class Job_appliers{
         $stmt->bind_param("si", $status, $id);
         $addjob = $stmt->execute();
         $stmt->close();
+    }
+
+    public function displayStaus($id) {
+        $query = "SELECT * FROM `job_appliers`join jobs on job_appliers.job_id=jobs.job_id join users on job_appliers.id=users.id WHERE job_appliers.id = ?;";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $ApplierStatus = $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $ApplierStatus;
     }
 }

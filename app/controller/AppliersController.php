@@ -32,5 +32,22 @@ class AppliersController {
             header('location: /candidat');
         }
     }
+    
+    public function statusAppliers(){
+            if(isset($_SESSION['id'])){
+                $status = new Job_appliers();
+                $notifications = $status->displayStaus($_SESSION['id']);
+                foreach($notifications as $notification){
+                    if ($notification['applier_status'] == "approved") {
+                        $Notifications[] = "Your aplly for the job " . $notification['title'] . " is " . $notification['applier_status'];
+                    }elseif ($notification['applier_status'] == "disapproved") {
+                        $Notifications[] = "Your aplly for the job " . $notification['title'] . " is " . $notification['applier_status'];
+                    }else {
+                        $Notifications[] = "Your aplly for the job " . $notification['title'] . " is in review";
+                    }
+                }
+                require __DIR__ .'../../../views/Usersview/notifications.php';
+        }else header('location: /home');
+    
+    }
 }
-

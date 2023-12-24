@@ -25,10 +25,11 @@ $route = [
     '/dashboard' => 'Controller/HomeController.php',
     '/contact' => 'Controller/HomeController.php',
     '/candidat' => 'Controller/AppliersController.php',
-    '/updateCandidat' => 'Controller/AppliersController.php'
+    '/updateCandidat' => 'Controller/AppliersController.php',
+    '/notification' => 'Controller/AppliersController.php'
 ];
 if(array_key_exists($url,$route)){
-    // require_once __DIR__ . '/../app/' . $route[$url];
+    require_once __DIR__ . '/../app/' . $route[$url];
 switch ($url) {
     case '/':
         $controller = new HomeController();
@@ -78,14 +79,18 @@ switch ($url) {
         $logincontroller = new CrudJobController();
         $logincontroller->handleJobForm();
         break;
-        case '/jobdelete':
-            $logincontroller = new CrudJobController();
-            $logincontroller->handleJobDeletion();
-            break;
-        case '/jobsearch':
-            $logincontroller = new JobSearchController();
-            $logincontroller->search();
-            break;
+    case '/jobdelete':
+        $logincontroller = new CrudJobController();
+        $logincontroller->handleJobDeletion();
+        break;
+    case '/jobsearch':
+        $logincontroller = new JobSearchController();
+        $logincontroller->search();
+        break;
+    case '/notification':
+        $Notification = new AppliersController();
+        $Notification->statusAppliers();
+        break;
     // Add more cases for other routes as needed
     default:
         // Handle 404 or redirect to the default route
