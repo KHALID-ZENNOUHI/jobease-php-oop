@@ -106,9 +106,9 @@
                             <div class="card-body  p-4">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
-                                        <p class="mb-0">Offres</p>
+                                        <p class="mb-0">Active Offres</p>
                                         <div class="mt-4">
-                                            <h3><strong>18</strong></h3>
+                                            <h3><strong><?= $numjob['COUNT(*)'] ?></strong></h3>
                                             
                                         </div>
                                     </div>
@@ -125,9 +125,9 @@
                             <div class="card-body p-4">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
-                                        <p class="mb-0">Active Offres</p>
+                                        <p class="mb-0">Users</p>
                                         <div class="mt-4">
-                                            <h3><strong>132</strong></h3>
+                                            <h3><strong><?= $numusers['COUNT(*)'] ?></strong></h3>
                                            
                                         </div>
                                     </div>
@@ -144,9 +144,9 @@
                             <div class="card-body p-4">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
-                                        <p class="mb-0">Nombre visiteurs</p>
+                                        <p class="mb-0">Offres approuved</p>
                                         <div class="mt-4">
-                                            <h3><strong>12</strong></h3>
+                                            <h3><strong><?= $jobapproved['COUNT(*)'] ?></strong></h3>
                                             <!-- <p><strong></strong> Completed</p> -->
                                         </div>
                                     </div>
@@ -163,10 +163,9 @@
                             <div class="card-body p-4">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
-                                        <p class="mb-0">Offres approuver</p>
+                                        <p class="mb-0">Offres disapprouved</p>
                                         <div class="mt-4">
-                                            <h3><strong>76%</strong></h3>
-                                            <p><strong>57%</strong> Completed</p>
+                                            <h3><strong><?= $jobdisaprouved['COUNT(*)'] ?></strong></h3>
                                         </div>
                                     </div>
                                     <div class="">
