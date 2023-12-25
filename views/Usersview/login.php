@@ -15,7 +15,12 @@
     <div class="wrapper">
       <div class="title">
         <span>Login Form</span>
-        <span><?php if(!empty($_SESSION['error'])) echo $_SESSION['error']; ?></span>
+      </div>
+      <div class="title">
+        <span><?php 
+        if(!empty($_SESSION['error'])) echo $_SESSION['error'];
+        unset($_SESSION['error']);
+        ?></span>
       </div>
       <h1></h1>
       <form action="/login" method="POST">

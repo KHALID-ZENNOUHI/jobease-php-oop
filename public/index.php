@@ -29,7 +29,7 @@ $route = [
     '/notification' => 'Controller/AppliersController.php'
 ];
 if(array_key_exists($url,$route)){
-    require_once __DIR__ . '/../app/' . $route[$url];
+    // require_once __DIR__ . '/../app/' . $route[$url];
 switch ($url) {
     case '/':
         $controller = new HomeController();

@@ -76,6 +76,9 @@
 							<a class="nav-link" href="login">Login</a>
 							<?php }?>
 						</li>
+						<li class="nav-item">
+							<a  href="logout" class="nav-link">Logout</a>
+						</li>
 					</ul>
 				</div>
 			</div>

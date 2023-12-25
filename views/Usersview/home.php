@@ -57,21 +57,12 @@
 						<li class="nav-item">
 							<?php if (isset($_SESSION['username'])) {?>
 								 <p class="nav-link"><?= $_SESSION['username']?></p>
-								 <ul class="navbar-nav">
-                        			<li class="nav-item dropdown">
-                        			    <a href="#" class="nav-icon pe-md-0 position-relative" data-bs-toggle="dropdown" aria-expanded="false">
-                        			        <img src="dashboard/img/photo_admin.svg" alt="icon" >
-                        			    </a>
-                        			    <div class="dropdown-menu dropdown-menu-end position-absolute" id = "f">
-                        			        <a class="dropdown-item" href="#">Profile</a>
-                        			        <a class="dropdown-item" href="#">Account Setting</a>
-                        			        <a class="dropdown-item" href="index.php?logout">Log out</a>
-                        			    </div>
-                        			</li>
-                    			</ul>
 							<?php }else{?>
 							<a class="nav-link" href="login">Login</a>
 							<?php }?>
+						</li>
+						<li class="nav-item">
+							<a  href="logout" class="nav-link">Logout</a>
 						</li>
 					</ul>
 				</div>
@@ -107,7 +98,6 @@
 	function search(e) {
     document.querySelector("#all_jobs").innerHTML = "";
     const inputs = e.currentTarget.querySelectorAll("input");
-    // console.log(inputs);
     let keyword = inputs[0].value;
     let location = inputs[1].value;
     let company = inputs[2].value;

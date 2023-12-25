@@ -13,7 +13,10 @@
 <body>
   <div class="wrapper">
     <h2>Registration</h2>
-    <h2><?php if (!empty($_SESSION['error'])) echo $_SESSION['error']; ?></h2>
+    <h2><?php 
+    if (!empty($_SESSION['error'])) echo $_SESSION['error']; 
+    unset($_SESSION['error']);
+    ?></h2>
     <form method = "POST" action="register">
       <div class="input-box">
         <input type="text" name = "username" placeholder="Enter your name" required>
